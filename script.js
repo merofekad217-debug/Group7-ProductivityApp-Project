@@ -159,7 +159,14 @@ function checkDeadlines() {
   save();
 }
 load();
-if (tasks.length === 0) fetchFromAPI();
-else render();
+
+const apiLoaded = localStorage.getItem("apiLoaded");
+
+if (!apiLoaded) {
+  fetchFromAPI();
+  localStorage.setItem("apiLoaded", "true");
+} else {
+  render();
+}
 
 setInterval(checkDeadlines, 60000);
