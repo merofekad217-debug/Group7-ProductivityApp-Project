@@ -1,0 +1,66 @@
+@media (max-width: 480px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .app-container {
+    margin: 20px auto;
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .add-task {
+    flex-direction: column;
+  }
+
+  .add-task input,
+  .add-task button {
+    width: 100%;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filters button {
+    flex: 1;
+    font-size: 14px;
+  }
+
+  .task-item {
+    font-size: 14px;
+  }
+
+  footer {
+    font-size: 11px;
+    padding: 10px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+  .app-container {
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .filters button {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .app-container {
+    max-width: 460px;
+  }
+}

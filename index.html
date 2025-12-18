@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="responssive.css" href="responssive.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Productive Planner Pro</h1>
+    </header>
+  <main class="app-container">
+
+    <h1>Productive Planner Pro</h1>
+
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Search here...">
+    </div>
+
+    <div class="add-task">
+      <input type="text" id="task-input" placeholder="Add New Todo item here...">
+      <input type="date" id="deadline-input">
+      <button id="add-btn">Add</button>
+    </div>
+
+    <p id="counter">0 tasks remaining</p>
+
+    <div class="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="completed">Completed</button>
+      <button data-filter="active">Active</button>
+      <button data-filter="overdue">Overdue</button>
+    </div>
+
+    <label class="select-all">
+      <input type="checkbox" id="select-all">
+      Select all
+    </label>
+
+    <hr>
+
+    <ul id="task-list"></ul>
+    <p id="empty-msg">No todos found</p>
+
+  </main>
+
+  <footer>
+    <p>
+      Created with by Group 7 <br>
+      Daniya Bilal<br>
+      Feben Belay<br>
+      Fikraddis Tadele <br>
+      Fraol Zewde <br>
+      Meron Fekadu 
+    </p>
+  </footer>
+
+</body>
+</html>
