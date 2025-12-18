@@ -1,4 +1,3 @@
-
 let tasks = [];
 let currentFilter = "all";
 
@@ -12,7 +11,7 @@ const selectAll = document.querySelector('#select-all');
 const filterButtons = document.querySelectorAll('.filters button');
 const emptyMsg = document.querySelector('#empty-msg');
 
-
+// Add Task
 addBtn.addEventListener('click', () => {
   if (taskInput.value.trim() === "") return;
 
@@ -30,6 +29,7 @@ addBtn.addEventListener('click', () => {
   render();
 });
 
+// Filter Buttons 
 filterButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     currentFilter = btn.dataset.filter;
@@ -39,22 +39,22 @@ filterButtons.forEach(btn => {
   });
 });
 
+// Search
 searchInput.addEventListener('input', render);
 
+// Select All
 selectAll.addEventListener('change', () => {
   tasks.forEach(t => t.completed = selectAll.checked);
   save();
   render();
 });
 
-
+// Render task
 function render() {
   taskList.innerHTML = "";
 
   let filtered = [...tasks];
 
-
- 
   if (currentFilter === "active")
     filtered = filtered.filter(t => !t.completed);
   if (currentFilter === "completed")
@@ -74,6 +74,7 @@ function render() {
     const li = document.createElement('li');
     li.className = "task-item";
 
+  // Checkbox task
     const cb = document.createElement('input');
     cb.type = "checkbox";
     cb.checked = task.completed;
@@ -88,7 +89,8 @@ function render() {
     span.textContent = task.description;
     span.className = "task-text";
     if (task.completed) span.classList.add('completed');
-
+    
+    // Edit Task 
     const edit = document.createElement('button');
     edit.textContent = "Edit";
     edit.className = "edit-btn";
@@ -99,6 +101,7 @@ function render() {
       render();
     };
 
+    // Delete Task
     const del = document.createElement('button');
     del.textContent = "✖";
     del.className = "delete-btn";
@@ -108,6 +111,7 @@ function render() {
       render();
     };
 
+    // overdue
     const today = new Date().toISOString().split('T')[0];
     if (task.deadline && task.deadline < today && !task.completed)
       li.classList.add('overdue');
@@ -121,7 +125,7 @@ function render() {
   selectAll.checked = tasks.length && tasks.every(t => t.completed);
 }
 
-
+//Local Storage
 function save() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
@@ -131,7 +135,7 @@ function load() {
   if (data) tasks = JSON.parse(data);
 }
 
-
+//API Fetch
 function fetchFromAPI() {
     fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
     .then(res => res.json())
@@ -148,6 +152,7 @@ function fetchFromAPI() {
     });
 }
 
+// Notification
 function checkDeadlines() {
   const today = new Date().toISOString().split('T')[0];
   tasks.forEach(t => {
@@ -170,3 +175,4 @@ if (!apiLoaded) {
 }
 
 setInterval(checkDeadlines, 60000);
+
